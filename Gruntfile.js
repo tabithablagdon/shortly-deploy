@@ -72,8 +72,9 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         //script for building production server
+        command: 'git push live3 master'
       }
-    },
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -101,6 +102,10 @@ module.exports = function(grunt) {
     if (grunt.option('prod')) {
       //Invoke shell somehow
       // add your production server task here
+      grunt.task.run([ 'build', 'shell' ]);
+      //Call grunt build
+      //call git push live master??
+
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
@@ -108,7 +113,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
       // add your production server task here
-    'nodemon', 'watch'
+    'upload'
   ]);
 
 
