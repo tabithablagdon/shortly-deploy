@@ -2,14 +2,20 @@ var path = require('path');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://104.236.157.87');
+mongoose.connect('mongodb://127.0.0.1:27017', function(err, db) {
+  if (err) {
+    console.log('mongo connection err', err);  
+  } else {
+    console.log('Successfully connected to mongo db!!!');  
+  }
+});
 
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', console.log.bind(console, 'We are in here!'));
 
-var urls = new Schema({
+db.Urls = new Schema({
   url: String, 
   baseUrl: String, 
   code: String, 
@@ -18,7 +24,7 @@ var urls = new Schema({
   createdAt: Date
 });
 
-var users = new Schema({
+db.Users = new Schema({
   username: String, 
   password: String, 
   createdAt: Date
