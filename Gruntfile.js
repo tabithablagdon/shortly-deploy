@@ -72,7 +72,7 @@ module.exports = function(grunt) {
     shell: {
       prodServer: {
         //script for building production server
-        command: 'git push live3 master'
+        command: 'git push live master'
       }
     }
   });
