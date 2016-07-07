@@ -2,8 +2,16 @@ var db = require('../config');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
+var Urls = mongoose.Schema({
+  url: String, 
+  baseUrl: String, 
+  code: String, 
+  title: String, 
+  visits: Number, 
+  createdAt: Date
+});
 
-db.Urls.pre('save', function() {
+Urls.pre('save', function() {
 
   var postedUrl = this;
 
@@ -13,7 +21,7 @@ db.Urls.pre('save', function() {
 
 });
 
-var Link = mongoose.model('Link', db.Urls);
+var Link = mongoose.model('Link', Urls);
 
 
 module.exports = Link;

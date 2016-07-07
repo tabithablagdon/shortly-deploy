@@ -94,7 +94,7 @@ module.exports = function(grunt) {
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('test', ['mochaTest', 'eslint']);
+  grunt.registerTask('test', ['mochaTest']);
 
   grunt.registerTask('build', ['concat', 'uglify', 'cssmin']);
 
